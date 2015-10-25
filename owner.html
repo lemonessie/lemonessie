@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Nessie Lemonade</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <style>
+    div#money {
+        font-size: 4em;
+        color: orange;
+    }
+    </style>
+</head>
+
+<body>
+    <center>
+        <h1>Your Lemonade Stand</h1>
+        <div id="money"></div>
+    </center>
+    <script type="text/javascript" src="jquery-2.1.4.min.js"></script>
+    <script>
+    function getMyMONEY() {
+        $.get('data.php', function(data) {
+            var money = JSON.parse(data);
+            $('#money').text('$' + money.total);
+        });
+    }
+
+    $(function() {
+        getMyMONEY();
+        setTimeout(getMyMONEY, 15000);
+    });
+    </script>
+</body>
+
+</html>
